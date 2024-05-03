@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>MY ORDERS</h2>
+
+    <div>
+        <p id="orderData"></p>
+    </div>
+    <script src="configuration.js"></script>
+    <script>
+        getOrders();
+        let orderData = document.getElementById("orderData");
+        let email = localStorage.getItem("email");
+        async function getOrders(){
+            let response = await fetch(getHost() + "/orders?email=" + email);
+            let flower = JSON.parse(localStorage.getItem("basket"))[0];
+            let data = await response.json();
+
+            if(data.length == 0 ){
+                orderData.innerHTML = "<h3>No orders found</h3>";
+            }else{
+            console.log(data);
+            data.forEach(order => {
+                orderData.innerHTML += `
+                    <div>
+                        
+                        <h4>Delivery Date: ${order.date}</h4>
+                        <h4>Address: ${order.address}</h4>
+                        <h4>Flower: ${flower.description}</h4>
+                        <h4>Price: ${order.price}</h4>
+                    </div>
+                `;
+            });}
+
+            
+        }
+
+    </script>
+</body>
+</html>

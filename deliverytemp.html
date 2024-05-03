@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <nav>
+        <div>
+            <img src="" class="logo" alt="This is a logo">
+        </div>
+        <ul>
+            <li><a href="">Track Order</a></li>
+            <li><a href="">Help</a></li>
+            <li> 
+                <a href="login.html"><img src="" alt="profile-img"></a></li>
+            <li> <a href=""><img src="" alt="profile-img"></a></li>
+        </ul>
+    </nav>
+
+    <div>
+        <div>
+            <h4> Save $10 on every delivery with an account</h4>
+            <button onclick="helper()">LOG IN</button>
+            <button onclick="helper()">SIGN UP</button>
+        </div>
+
+    </div>
+    <div>
+       <div>
+            <h3 id="letter-header"></h3>
+            <div id="flower-img"></div>
+            <h5>Delivery Date</h5>
+            <h5 id="ddate"></h5>
+
+
+       </div>
+
+       <div>
+        <form class="recipient-form" onsubmit="event.preventDefault(); window.location.href = 'placeOrder.html';">
+            <h3>RECIPIENT</h3>
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" placeholder="Enter first name" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" placeholder="Enter last name" required>
+            </div>
+            <div class="form-group">
+                <label for="relationship">Relationship:</label>
+                <select name="relationship" id="relationship">
+                    <option value="Mother">Mother</option>
+                    <option value="Sister">Sister</option>
+                    <option value="Friend">Friend</option>
+                    <option value="Wife">Wife</option>
+                    <option value="Girlfriend">Girlfriend</option>
+                    <option value="Daughter">Daughter</option>
+                </select>
+            </div>
+            <h3>DELIVER TO</h3>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" id="address" placeholder="Enter address" required>
+            </div>
+            <div class="form-group">
+                <label for="apt">Apt, Suite, Bldg (optional):</label>
+                <input type="text" id="apt" placeholder="Enter optional details">
+            </div>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" id="city" placeholder="Enter city" required>
+            </div>
+            <div class="form-group">
+                <label for="state">State:</label>
+                <select name="state" id="state">
+                    <option value="AL">AL</option>
+            <option value="AK">AK</option>
+            <option value="AZ">AZ</option>
+            <option value="AR">AR</option>
+            <option value="CA">CA</option>
+            <option value="CO">CO</option>
+            <option value="CT">CT</option>
+            <option value="DE">DE</option>
+            <option value="FL">FL</option>
+            <option value="GA">GA</option>
+            <option value="HI">HI</option>
+            <option value="ID">ID</option>
+            <option value="IL">IL</option>
+            <option value="IN">IN</option>
+            <option value="IA">IA</option>
+            <option value="KS">KS</option>
+            <option value="KY">KY</option>
+            <option value="LA">LA</option>
+            <option value="ME">ME</option>
+            <option value="MD">MD</option>
+            <option value="MA">MA</option>
+            <option value="MI">MI</option>
+            <option value="MN">MN</option>
+            <option value="MS">MS</option>
+            <option value="MO">MO</option>
+            <option value="MT">MT</option>
+            <option value="NE">NE</option>
+            <option value="NV">NV</option>
+            <option value="NH">NH</option>
+            <option value="NJ">NJ</option>
+            <option value="NM">NM</option>
+            <option value="NY">NY</option>
+            <option value="NC">NC</option>
+            <option value="ND">ND</option>
+            <option value="OH">OH</option>
+            <option value="OK">OK</option>
+            <option value="OR">OR</option>
+            <option value="PA">PA</option>
+            <option value="RI">RI</option>
+            <option value="SC">SC</option>
+            <option value="SD">SD</option>
+            <option value="TN">TN</option>
+            <option value="TX">TX</option>
+            <option value="UT">UT</option>
+            <option value="VT">VT</option>
+            <option value="VA">VA</option>
+            <option value="WA">WA</option>
+            <option value="WV">WV</option>
+            <option value="WI">WI</option>
+            <option value="WY">WY</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="zip">Zip Code:</label>
+                <input type="text" id="zip" placeholder="Enter zip code" required>
+            </div>
+            <button type="submit" > CONTINUE</button>
+        </form>
+        
+       </div>
+
+    </div>
+    <script src="configuration.js"></script>
+    <script>
+            function isFormFilled() {
+                let formId = "recipient-form";
+                const form = document.querySelector('.recipient-form');
+                const inputs = form.querySelectorAll('input, select');
+               
+
+                    for (const input of inputs) {
+                        if (input.value.trim() === '') {
+                            return false;
+                        }
+                    }
+
+            return true;
+}
+
+        let order = JSON.parse(localStorage.getItem("order"));
+        let letter = JSON.parse(localStorage.getItem("basket"))[0].description;
+        let flowerId = order.id;
+        let deliveryDate = order.date;
+
+        function helper(){
+            console.log(isFormFilled())
+            if (isFormFilled()){
+                localStorage.setItem("recipient", JSON.stringify({
+                    firstName: document.getElementById("firstName").value,
+                    lastName: document.getElementById("lastName").value,
+                    relationship: document.getElementById("relationship").value,
+                    address: document.getElementById("address").value,
+                    apt: document.getElementById("apt").value,
+                    city: document.getElementById("city").value,
+                    state: document.getElementById("state").value,
+                    zip: document.getElementById("zip").value
+                }));
+                
+            }
+            location.href = "login.html";
+            route = true; 
+            
+        }
+
+
+        
+
+
+
+
+        document.getElementById("letter-header").innerText = letter;
+        document.getElementById("ddate").innerText = deliveryDate;
+
+        let img = document.getElementById("flower-img")
+        img.innerHTML = `<img src="${getHost()}/flowers/${flowerId}/image" alt="flower">`;
+
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <script src="main.js">
+        
+        
+        
+
+    </script>
+</body>
+</html>
