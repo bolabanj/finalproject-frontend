@@ -1,6 +1,6 @@
-const mode  = 0;
+const mode  = 1;
 const host_local = 'http://localhost:8080';
-const host_remote = '';
+const host_remote = 'https://finalproject-latest-pt7o.onrender.com';
 
 const route = false; 
 
