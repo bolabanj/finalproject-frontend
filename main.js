@@ -35,7 +35,7 @@ async function displayFlowers() {
         let card = document.createElement('div');
         card.classList.add('card');
         card.innerHTML = `
-            <img src="${host}/flowers/${flower.id}/image" alt="${flower.name}" width="400px" height="400px" onclick="getToBasket('${flower.id}')">
+            <img src="static/${flower.id}.jpg" alt="${flower.name}" width="400px" height="400px" onclick="getToBasket('${flower.id}')">
             <p>${flower.description}</p>
             <p><span>from </span>$${flower.price}</p>
             
@@ -57,7 +57,7 @@ function typeFilter(type) {
         let card = document.createElement('div');
         card.classList.add('card');
         card.innerHTML = `
-            <img src="${host}/flowers/${flower.id}/image" alt="${flower.name}" width="400px" height="400px" onclick="getToBasket('${flower.id}')">
+            <img src="static/${flower.id}.jpg" alt="${flower.name}" width="400px" height="400px" onclick="getToBasket('${flower.id}')">
             <p>${flower.description}</p>
             <p><span>from </span>$${flower.price}</p>
            
@@ -76,7 +76,7 @@ for (let i = 0; i < filteredFlowers.length; i++) {
     let card = document.createElement('div');
     card.classList.add('card');
     card.innerHTML = `
-        <img src="${host}/flowers/${flower.id}/image" alt="${flower.name}" width="400px" height="400px"  onclick="getToBasket('${flower.id}')">
+        <img src="static/${flower.id}.jpg" alt="${flower.name}" width="400px" height="400px"  onclick="getToBasket('${flower.id}')">
         <p>${flower.description}</p>
         <p><span>from </span>$${flower.price}</p>
         
@@ -96,7 +96,7 @@ for (let i = 0; i < filteredFlowers.length; i++) {
     let card = document.createElement('div');
     card.classList.add('card');
     card.innerHTML = `
-        <img src="${host}/flowers/${flower.id}/image" alt="${flower.name}" width="400px" height="400px" onclick="getToBasket('${flower.id}')">
+        <img src="static/${flower.id}.jpg" alt="${flower.name}" width="400px" height="400px" onclick="getToBasket('${flower.id}')">
         <p>${flower.description}</p>
         <p><span>from </span>$${flower.price}</p>
         
@@ -124,7 +124,7 @@ for (let i = 0; i < flowers.length; i++) {
     let card = document.createElement('div');
     card.classList.add('card');
     card.innerHTML = `
-        <img src="${host}/flowers/${flower.id}/image" alt="${flower.name}" width="400px" height="400px" onclick="getToBasket('${flower.id}')">
+        <img src="static/${flower.id}.jpg" alt="${flower.name}" width="400px" height="400px" onclick="getToBasket('${flower.id}')">
         <p>${flower.description}</p>
         <p><span>from </span>$${flower.price}</p>
         

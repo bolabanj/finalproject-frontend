@@ -65,7 +65,7 @@
             let id = localStorage.getItem("flowerId");
             if (id) {
                 let flower = flowers.find(flower => flower.id == id);
-                document.getElementById("basketImage").innerHTML = `<img src="${getHost()}/flowers/${flower.id}/image" alt="${flower.des}">`;
+                document.getElementById("basketImage").innerHTML = `<img src="static/${flower.id}.jpg" alt="${flower.des}">`;
                 document.getElementById("BasketHeader").innerText = flower.description;
                 document.getElementById("amount-1").innerText = `$${flower.price - flower.price * 0.3}`;
                 document.getElementById("amount-2").innerText = flower.price;

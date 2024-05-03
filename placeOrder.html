@@ -62,7 +62,7 @@
             .then(response => response.blob())
             .then(blob => {
                 let url = URL.createObjectURL(blob);
-                document.getElementById("flower-img").innerHTML = `<img src="${url}" alt="flower">`;
+                document.getElementById("flower-img").innerHTML = `<img src="static/${flowerId}.jpg" alt="flower">`;
             })
             .catch(error => console.error(error));
 
